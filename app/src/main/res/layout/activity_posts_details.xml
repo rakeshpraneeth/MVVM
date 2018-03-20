@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
         <import type="android.view.View"/>
@@ -8,61 +8,92 @@
             type="com.krp.mvvm.viewModel.PostDetailsViewModel"/>
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="15dp"
-        tools:context="com.krp.mvvm.views.activities.PostsDetailsActivity">
+        tools:context="com.krp.mvvm.views.activities.PostsDetailsActivity"
+        android:padding="15dp">
 
         <TextView
+            android:id="@+id/headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/post_details"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/userId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="15dp"
             tools:text="user id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headline"
+            android:paddingTop="15dp"
             android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
-            android:text='@{viewModel.post !=null ? String.valueOf(viewModel.post.get().userId) : ""}'/>
+            android:text='@{viewModel.post !=null ? String.format("%s %s",@string/userId,String.valueOf(viewModel.post.userId)) : ""}'/>
 
         <TextView
+            android:id="@+id/postId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="15dp"
-            android:textStyle="bold"
             tools:text="post id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userId"
+            android:paddingTop="15dp"
             android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
-            android:text='@{viewModel.post !=null ? String.valueOf(viewModel.post.get().id) :""}'/>
+            android:text='@{viewModel.post !=null ? String.format("%s %s",@string/postId,String.valueOf(viewModel.post.id)) :""}'/>
 
         <TextView
+            android:id="@+id/postTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="15dp"
-            android:textStyle="bold"
             tools:text="title"
+            android:gravity="start"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postId"
+            android:paddingTop="15dp"
             android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
-            android:text='@{viewModel.post !=null ? viewModel.post.get().title : ""}'/>
+            android:text='@{viewModel.post !=null ? String.format("%s %s",@string/postTitle,viewModel.post.title) : ""}'/>
 
         <TextView
+            android:id="@+id/postBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="15dp"
-            android:textStyle="bold"
             tools:text="body"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/postTitle"
+            android:paddingTop="15dp"
             android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
-            android:text='@{viewModel.post !=null ? viewModel.post.get().body : ""}'/>
+            android:text='@{viewModel.post !=null ? String.format("%s %s",@string/postBody,viewModel.post.body) : ""}'/>
 
         <TextView
+            android:id="@+id/failedMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="15dp"
-            android:textStyle="bold"
-            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/post_details_failed"
             android:visibility="@{viewModel.failedMsgVisibility}"/>
 
@@ -71,9 +102,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             android:visibility="@{viewModel.progressBarVisibility}"/>
 
 
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>

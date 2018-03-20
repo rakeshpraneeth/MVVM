@@ -5,4 +5,18 @@
     <string name="failed_message">Failed to retrieve data</string>
     <string name="click_to_see_post_details">Click to see the post Details</string>
     <string name="post_details_failed">Failed to retrieve post details</string>
+    
+    <!--user detail strings-->
+    <string name="user_name">User Name :</string>
+    <string name="email">Email :</string>
+    <string name="ph">Ph :</string>
+    <string name="company">Company :</string>
+
+    <!--Post strings-->
+    <string name="post">Post :</string>
+    <string name="post_details">Post Details</string>
+    <string name="userId">user Id :</string>
+    <string name="postId">post Id :</string>
+    <string name="postTitle">Title :</string>
+    <string name="postBody">Body :</string>
 </resources>
