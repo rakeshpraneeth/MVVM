@@ -18,6 +18,7 @@ public class DashboardActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_dashboard);
 
         dashboardViewModel = new DashboardViewModel();
+        dashboardViewModel.makeCallToGetUsers();
         binding.setViewModel(dashboardViewModel);
     }
 }
