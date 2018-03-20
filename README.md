@@ -11,3 +11,7 @@ We use the Android data Binding concept in this project.
 <b>ViewModel</b> : Exposes streams of data relevant to the View
 
 <b>Model</b> : Abstracts the data source. The ViewModel works with the DataModel to get and save the data.
+
+<b>Project Info</b>
+* All the List Item click listeners are handled in their particular Item viewModel classes.
+* Used Retrofit library. It uses the OkHttp library for HTTP requests
