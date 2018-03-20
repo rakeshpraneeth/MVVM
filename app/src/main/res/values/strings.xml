@@ -3,4 +3,6 @@
     <string name="no_users_found">No users found</string>
     <string name="no_posts_found">No posts found</string>
     <string name="failed_message">Failed to retrieve data</string>
+    <string name="click_to_see_post_details">Click to see the post Details</string>
+    <string name="post_details_failed">Failed to retrieve post details</string>
 </resources>

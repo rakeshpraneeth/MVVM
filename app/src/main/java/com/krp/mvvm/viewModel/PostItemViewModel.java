@@ -1,9 +1,12 @@
 package com.krp.mvvm.viewModel;
 
+import android.content.Intent;
 import android.os.Parcel;
+import android.view.View;
 
 import com.krp.mvvm.R;
 import com.krp.mvvm.model.Post;
+import com.krp.mvvm.views.activities.PostsDetailsActivity;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
@@ -53,4 +56,11 @@ public class PostItemViewModel extends RowViewModel{
             return new PostItemViewModel[size];
         }
     };
+
+    public void onPostItemClicked(View view, Post post){
+        Intent intent = new Intent(view.getContext(), PostsDetailsActivity.class);
+        intent.putExtra(PostsDetailsActivity.POST_ID,post.getId());
+        intent.putExtra(PostsDetailsActivity.POST_DETAILS_OBJ,post);
+        view.getContext().startActivity(intent);
+    }
 }

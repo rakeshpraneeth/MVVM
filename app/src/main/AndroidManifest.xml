@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".views.activities.DashboardActivity" />
-        <activity android:name=".views.activities.PostsActivity"/>
+        <activity android:name=".views.activities.PostsActivity" />
+        <activity android:name=".views.activities.PostsDetailsActivity"/>
     </application>
 
 </manifest>

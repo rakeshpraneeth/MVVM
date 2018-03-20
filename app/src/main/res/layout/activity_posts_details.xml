@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.krp.mvvm.viewModel.PostDetailsViewModel"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp"
+        tools:context="com.krp.mvvm.views.activities.PostsDetailsActivity">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            tools:text="user id"
+            android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
+            android:text='@{viewModel.post !=null ? String.valueOf(viewModel.post.get().userId) : ""}'/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:text="post id"
+            android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
+            android:text='@{viewModel.post !=null ? String.valueOf(viewModel.post.get().id) :""}'/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:text="title"
+            android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
+            android:text='@{viewModel.post !=null ? viewModel.post.get().title : ""}'/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:text="body"
+            android:visibility="@{viewModel.post !=null ? View.VISIBLE:View.GONE}"
+            android:text='@{viewModel.post !=null ? viewModel.post.get().body : ""}'/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/post_details_failed"
+            android:visibility="@{viewModel.failedMsgVisibility}"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.progressBarVisibility}"/>
+
+
+
+    </LinearLayout>
+</layout>
