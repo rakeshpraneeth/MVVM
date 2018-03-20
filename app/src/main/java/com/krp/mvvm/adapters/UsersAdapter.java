@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
+ * Adapter used to show the Users list.
  * This class extends BindableAdapter class and override methods
  *
  */
@@ -27,7 +28,7 @@ public class UsersAdapter extends BindableAdapter {
     // This method returns which layout is being used for the item.
     @Override
     protected int getLayoutIdForPosition(int position) {
-        return usersList.get(position).getLayout();
+        return usersList.get(position).getLayout();     // obtained from the UserItemViewModel class.
     }
 
     @Override

@@ -10,6 +10,7 @@ import com.krp.mvvm.views.activities.PostsActivity;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
+ * This class is used for User Item and it's layout
  * This class should extend RowViewModel class.
  * Implement parcelable since RowViewModel implements Parcelable
  */
@@ -26,7 +27,7 @@ public class UserItemViewModel extends RowViewModel{
         return user;
     }
 
-    // Define the Layou you want to use for this item.
+    // Define the Layout you want to use for this item.
     // We will use this method in the custom adapter to bind layout to adapter.
     @Override
     public int getLayout() {
@@ -58,10 +59,14 @@ public class UserItemViewModel extends RowViewModel{
     };
 
     // This method will be triggered when user click on the custom_user_item.xml layout
-    public void navigateToUserPosts(View view, User user){
+    // It will be called when a particular user item/cell is clicked.
+    // We get the object of the particular item which is clicked.
+    public void onUserItemClicked(View view, User user){
 
         Intent intent = new Intent(view.getContext(), PostsActivity.class);
+
         intent.putExtra(PostsActivity.USER_ID,user.getId());
+
         view.getContext().startActivity(intent);
     }
 }

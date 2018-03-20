@@ -14,15 +14,19 @@ public class PostsDetailsActivity extends AppCompatActivity {
     public static final String POST_ID = "postId";
 
     ActivityPostsDetailsBinding binding;
+
     PostDetailsViewModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_posts_details);
 
         int postId = getIntent().getIntExtra(POST_ID,-1);
-        viewModel = new PostDetailsViewModel();
-        viewModel.getPostDetails(postId);
-        binding.setViewModel(viewModel);
+
+        viewModel = new PostDetailsViewModel();     // creating the instance of ViewModel
+        viewModel.getPostDetails(postId);           // call method to make network call.
+
+        binding.setViewModel(viewModel);    // binding the ViewModel to the layout/view.
     }
 }

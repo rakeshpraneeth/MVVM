@@ -13,7 +13,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="15dp"
-        android:onClick="@{(v)->item.navigateToUserPosts(v,item.user)}">
+        android:onClick="@{(v)->item.onUserItemClicked(v,item.user)}">
 
         <TextView
             android:layout_width="match_parent"

@@ -13,8 +13,11 @@ import com.krp.mvvm.viewModel.PostsViewModel;
 public class PostsActivity extends AppCompatActivity {
 
     public static final String USER_ID = "UserId";
+
     ActivityPostsBinding binding;
+
     PostsViewModel viewModel;
+
     PostsAdapter adapter;
 
     @Override
@@ -24,17 +27,20 @@ public class PostsActivity extends AppCompatActivity {
 
         int userId = getIntent().getIntExtra(USER_ID,-1);
 
-        viewModel = new PostsViewModel();
+        viewModel = new PostsViewModel();       // created a ViewModel instance
 
-        adapter = new PostsAdapter();
-        viewModel.setAdapter(adapter);  // Pass adapter to viewModel to set data to adapter when obtained
+        adapter = new PostsAdapter();           // created an adapter for posts Recycler view
+        viewModel.setAdapter(adapter);          // pass adapter to viewModel to set data to adapter when obtained
 
-        viewModel.makeCallToGetPosts(userId);   // To make network call to get data.
-        binding.setViewModel(viewModel);
+        viewModel.makeCallToGetPosts(userId);   // to make network call to get data.
+
+        binding.setViewModel(viewModel);        // binding the ViewModel to layout/view.
 
         loadPosts();
     }
 
+
+    // used to map the Recycler view to adapter.
     private void loadPosts(){
 
         binding.listOfPostsRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));

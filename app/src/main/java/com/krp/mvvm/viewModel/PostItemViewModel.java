@@ -10,6 +10,7 @@ import com.krp.mvvm.views.activities.PostsDetailsActivity;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
+ * This class is used for Post Item and it's layout.
  * This class should extend RowViewModel class.
  * Implement parcelable since RowViewModel implements Parcelable
  */
@@ -28,7 +29,7 @@ public class PostItemViewModel extends RowViewModel{
 
     @Override
     public int getLayout() {
-        return R.layout.custom_post_item;
+        return R.layout.custom_post_item;   // Define layout to be used for each post item.
     }
 
     @Override
@@ -57,10 +58,15 @@ public class PostItemViewModel extends RowViewModel{
         }
     };
 
+    // It will get called when user clicks on a particular post/cell/item.
+    // We get the object of the particular item which is clicked.
     public void onPostItemClicked(View view, Post post){
+
         Intent intent = new Intent(view.getContext(), PostsDetailsActivity.class);
+
         intent.putExtra(PostsDetailsActivity.POST_ID,post.getId());
         intent.putExtra(PostsDetailsActivity.POST_DETAILS_OBJ,post);
+
         view.getContext().startActivity(intent);
     }
 }

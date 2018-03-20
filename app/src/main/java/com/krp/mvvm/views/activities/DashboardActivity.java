@@ -13,18 +13,24 @@ import com.krp.mvvm.viewModel.DashboardViewModel;
 public class DashboardActivity extends AppCompatActivity {
 
     ActivityDashboardBinding binding;
+
     DashboardViewModel dashboardViewModel;
+
     UsersAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_dashboard);
 
-        adapter = new UsersAdapter();
-        dashboardViewModel = new DashboardViewModel();
-        dashboardViewModel.setAdapter(adapter);     // We will use this adapter in ViewModel and we set the values.
-        dashboardViewModel.makeCallToGetUsers();      // To make service call and get the data.
-        binding.setViewModel(dashboardViewModel);
+        adapter = new UsersAdapter();                       // created adapter for Users RecyclerView.
+
+        dashboardViewModel = new DashboardViewModel();      // creating a ViewModel instance.
+        dashboardViewModel.setAdapter(adapter);             // we will use this adapter in ViewModel and we set the values.
+        dashboardViewModel.makeCallToGetUsers();            // to make network call and get the data.
+
+        binding.setViewModel(dashboardViewModel);           // binding the viewModel to layout/view.
+
         loadUsers();
     }
 

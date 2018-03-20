@@ -14,6 +14,8 @@ import retrofit2.Response;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
+ * This class is tied with Post Details Activity and it's layout.
+ * We make network calls and set the responses to the variables defined.
  */
 
 public class PostDetailsViewModel {

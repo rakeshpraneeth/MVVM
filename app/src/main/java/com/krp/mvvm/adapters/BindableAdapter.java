@@ -12,6 +12,8 @@ import com.krp.mvvm.BR;
  * Created by rakeshpraneeth on 3/19/18.
  * Class used to build the adapters for RecyclerView.
  * Extend the CustomAdapter class with Bindable adapter and pass ViewModel which extends RowViewModel that contains data.
+ * It binds the Layout view to the ViewModel.
+ * Add the variable of the list item as "item" to make it unique. As we are using BR.item in out bind() method.
  *
  */
 

@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class DashboardViewModel {
 
     // We use Observables to notify to Views in layout when a particular value is changes.
+    // If a particular variable value is changed only the view which implements that variable will get notified. Not all the views.
     private ObservableInt usersRvVisibility;
     private ObservableInt progressbarVisibility;
     private ObservableInt noUsersMsgVisibility;
@@ -106,13 +107,14 @@ public class DashboardViewModel {
 
     }
 
+    // It is used to update the recyclerview with new Data.
     private void showUsersInList(List<User> users){
         List<UserItemViewModel> list = new ArrayList();
 
         for(User user:users){
             list.add(new UserItemViewModel(user));
         }
-        adapter.setUsersList(list);
+        adapter.setUsersList(list); // Updates the recyclerview items. We already binded the recyclerview to adapter in activity.
         usersRvVisibility.set(View.VISIBLE);   // It will notify recycler view to show
     }
 }
