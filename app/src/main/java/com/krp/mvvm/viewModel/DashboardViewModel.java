@@ -3,10 +3,12 @@ package com.krp.mvvm.viewModel;
 import android.databinding.ObservableInt;
 import android.view.View;
 
+import com.krp.mvvm.adapters.UsersAdapter;
 import com.krp.mvvm.common.BaseUrl;
 import com.krp.mvvm.interfaces.ApiService;
 import com.krp.mvvm.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,6 +33,8 @@ public class DashboardViewModel {
 
     // Used for Retrofit calls.
     private ApiService apiService;
+
+    private UsersAdapter adapter;
 
     public DashboardViewModel(){
         // Here we initialize the variables with state how they want to be shown when user comes to this screen.
@@ -57,6 +61,10 @@ public class DashboardViewModel {
         return messageFailedVisibility;
     }
 
+    public void setAdapter(UsersAdapter adapter) {
+        this.adapter = adapter;
+    }
+
     public void makeCallToGetUsers(){
 
         if(apiService == null){
@@ -76,8 +84,7 @@ public class DashboardViewModel {
                     if (response.body().size() > 0) {
                         // If more than one user is obtained.
 
-                        usersRvVisibility.set(View.VISIBLE);   // It will notify recycler view to show
-
+                        showUsersInList(response.body());
                     }else{
                         // If No users are obtained.
 
@@ -97,5 +104,15 @@ public class DashboardViewModel {
             }
         });
 
+    }
+
+    private void showUsersInList(List<User> users){
+        List<UserItemViewModel> list = new ArrayList();
+
+        for(User user:users){
+            list.add(new UserItemViewModel(user));
+        }
+        adapter.setUsersList(list);
+        usersRvVisibility.set(View.VISIBLE);   // It will notify recycler view to show
     }
 }
