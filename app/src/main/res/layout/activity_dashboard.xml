@@ -1,9 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.krp.mvvm.views.activities.DashboardActivity">
+<layout>
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.krp.mvvm.viewModel.DashboardViewModel"/>
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.krp.mvvm.views.activities.DashboardActivity">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listOfUsersRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.usersRvVisibility}"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.progressbarVisibility}"/>
+
+        <TextView
+            android:id="@+id/no_users_message_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_users_found"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.noUsersMsgVisibility}"/>
+
+        <TextView
+            android:id="@+id/failed_message_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/failed_message"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_centerInParent="true"
+            android:visibility="@{viewModel.messageFailedVisibility}"/>
+
+    </RelativeLayout>
+</layout>
