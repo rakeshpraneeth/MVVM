@@ -61,6 +61,7 @@ public class UserItemViewModel extends RowViewModel{
     public void navigateToUserPosts(View view, User user){
 
         Intent intent = new Intent(view.getContext(), PostsActivity.class);
+        intent.putExtra(PostsActivity.USER_ID,user.getId());
         view.getContext().startActivity(intent);
     }
 }

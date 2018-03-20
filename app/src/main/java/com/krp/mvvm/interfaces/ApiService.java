@@ -1,11 +1,13 @@
 package com.krp.mvvm.interfaces;
 
+import com.krp.mvvm.model.Post;
 import com.krp.mvvm.model.User;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
@@ -18,4 +20,7 @@ public interface ApiService {
 
     @GET("/users")
     Call<List<User>> getAllUsers();
+
+    @GET("/posts")
+    Call<List<Post>> getUserPosts(@Query("userId") int userId);
 }
