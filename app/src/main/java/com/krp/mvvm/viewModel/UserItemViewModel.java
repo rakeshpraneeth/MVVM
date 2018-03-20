@@ -1,9 +1,12 @@
 package com.krp.mvvm.viewModel;
 
+import android.content.Intent;
 import android.os.Parcel;
+import android.view.View;
 
 import com.krp.mvvm.R;
 import com.krp.mvvm.model.User;
+import com.krp.mvvm.views.activities.PostsActivity;
 
 /**
  * Created by rakeshpraneeth on 3/19/18.
@@ -53,4 +56,11 @@ public class UserItemViewModel extends RowViewModel{
             return new UserItemViewModel[size];
         }
     };
+
+    // This method will be triggered when user click on the custom_user_item.xml layout
+    public void navigateToUserPosts(View view, User user){
+
+        Intent intent = new Intent(view.getContext(), PostsActivity.class);
+        view.getContext().startActivity(intent);
+    }
 }
